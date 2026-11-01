@@ -1,0 +1,80 @@
+.contestant {
+  padding: 30rpx 32rpx;
+}
+.row {
+  display: flex;
+  align-items: center;
+}
+.num {
+  width: 68rpx;
+  height: 68rpx;
+  border-radius: 20rpx;
+  background: #eef0fb;
+  color: #5b5bd6;
+  font-weight: 800;
+  font-size: 30rpx;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-right: 24rpx;
+  flex-shrink: 0;
+}
+.info {
+  flex: 1;
+  min-width: 0;
+}
+.name {
+  font-size: 32rpx;
+  font-weight: 700;
+}
+.song {
+  font-size: 28rpx;
+  color: #6b7280;
+  margin-top: 4rpx;
+}
+.meta {
+  margin-top: 10rpx;
+}
+.tag {
+  background: #eef0fb;
+  color: #5b5bd6;
+  font-size: 22rpx;
+  padding: 6rpx 16rpx;
+  border-radius: 999rpx;
+}
+.score-box {
+  text-align: center;
+  margin-left: 16rpx;
+  min-width: 120rpx;
+}
+.score {
+  font-size: 46rpx;
+  font-weight: 800;
+  color: #5b5bd6;
+  line-height: 1.1;
+}
+.status {
+  font-size: 22rpx;
+  margin-top: 6rpx;
+}
+.status.done { color: #1a9b58; }
+.status.ing { color: #e8862a; }
+.status.none { color: #a9adbb; }
+
+.actions {
+  display: flex;
+  justify-content: flex-end;
+  gap: 32rpx;
+  margin-top: 22rpx;
+  border-top: 2rpx solid #f1f2f8;
+  padding-top: 22rpx;
+}
+.action-btn {
+  font-size: 28rpx;
+  color: #5b5bd6;
+  font-weight: 600;
+  padding: 6rpx 8rpx;
+}
+.action-btn.danger {
+  color: #e5484d;
+}

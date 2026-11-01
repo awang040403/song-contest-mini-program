@@ -1,0 +1,43 @@
+<view class="container">
+  <view wx:if="{{loading}}" class="empty">加载中…</view>
+
+  <view wx:elif="{{error}}" class="empty">
+    <view style="font-size:64rpx;">⚠️</view>
+    <view class="muted" style="padding:0 40rpx;">{{error}}</view>
+  </view>
+
+  <view wx:elif="{{rows.length === 0}}" class="empty">
+    <view style="font-size:80rpx;">🏆</view>
+    <view>暂无成绩</view>
+  </view>
+
+  <block wx:else>
+    <!-- champion banner -->
+    <view wx:if="{{champion}}" class="card champion">
+      <view class="crown">👑</view>
+      <view class="c-title">冠军</view>
+      <view class="c-name">{{champion.name}}</view>
+      <view class="c-song">《{{champion.song}}》 · {{champion.language}}</view>
+      <view class="c-score">{{champion.final}} 分</view>
+    </view>
+    <view wx:else class="card">
+      <view class="muted">还没有任何选手完成全部 {{judgeCount}} 位评委的打分，暂未产生冠军。下方为当前进度。</view>
+    </view>
+
+    <view class="section-title" style="padding:0 8rpx;">完整排名</view>
+    <view wx:for="{{rows}}" wx:key="id" class="card rank-row">
+      <view class="rank-badge rank-{{item.rank}}">{{item.rank === null ? '-' : item.rank}}</view>
+      <view class="r-info">
+        <view class="r-name">{{item.name}}</view>
+        <view class="r-song">《{{item.song}}》 · {{item.language}}</view>
+        <view wx:if="{{!item.complete}}" class="muted r-progress">打分进度 {{item.submitted}}/{{item.judgeCount}}</view>
+      </view>
+      <view class="r-score-box">
+        <view wx:if="{{item.final !== null}}" class="r-score">{{item.final}}</view>
+        <view wx:else class="muted">未出分</view>
+      </view>
+    </view>
+
+    <button class="btn-ghost" style="margin-top:16rpx;" bindtap="resetAll">清空所有数据</button>
+  </block>
+</view>

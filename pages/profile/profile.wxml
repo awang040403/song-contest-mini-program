@@ -1,0 +1,38 @@
+<view class="container">
+  <view class="card profile-card">
+    <block wx:if="{{user}}">
+      <image class="p-avatar" src="{{user.avatar || defaultAvatar}}" />
+      <view class="p-name">{{user.name}}</view>
+      <view class="p-badge {{isJudge ? 'ok' : 'no'}}">
+        {{isJudge ? '✓ 授权评委' : '普通用户（无打分权限）'}}
+      </view>
+      <button class="btn-ghost p-btn" bindtap="editProfile">修改资料</button>
+      <button class="btn-danger-ghost p-btn" bindtap="logout">退出登录</button>
+    </block>
+
+    <block wx:else>
+      <image class="p-avatar" src="{{defaultAvatar}}" />
+      <view class="p-name">未登录</view>
+      <view class="muted" style="margin:12rpx 0 28rpx;">登录后可参与评委打分</view>
+      <button class="btn-primary p-btn" bindtap="goLogin">微信登录</button>
+    </block>
+  </view>
+
+  <view class="card">
+    <view class="section-title">授权评委名单</view>
+    <view class="muted" style="margin-bottom:16rpx;">只有以下昵称登录后才能进入打分页：</view>
+    <view class="judge-list">
+      <text wx:for="{{authorizedJudges}}" wx:key="name" class="pill judge-pill">{{item.seat + 1}}号 · {{item.name}}</text>
+    </view>
+    <view class="muted" style="margin-top:18rpx;">
+      如需修改评委名单，请联系 明明。
+    </view>
+  </view>
+
+  <view class="card credit-card">
+    <view class="section-title">关于</view>
+    <view class="muted credit-line">本小程序由 <text class="credit-name">明明</text> 制作，版权归 明明 所有。</view>
+    <view class="muted credit-line">如果有小程序问题，请联系明明。</view>
+    <view class="muted credit-line">如果有报名/成绩相关问题，请联系阿鱼。</view>
+  </view>
+</view>

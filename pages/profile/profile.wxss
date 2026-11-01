@@ -1,0 +1,55 @@
+.profile-card {
+  text-align: center;
+  padding: 48rpx 36rpx;
+}
+.p-avatar {
+  width: 150rpx;
+  height: 150rpx;
+  border-radius: 50%;
+  background: #eef0fb;
+}
+.p-name {
+  font-size: 38rpx;
+  font-weight: 700;
+  margin-top: 18rpx;
+}
+.p-badge {
+  display: inline-block;
+  font-size: 24rpx;
+  padding: 8rpx 22rpx;
+  border-radius: 999rpx;
+  margin-top: 16rpx;
+}
+.p-badge.ok {
+  background: #e6f7ee;
+  color: #1a9b58;
+}
+.p-badge.no {
+  background: #f4f5fb;
+  color: #9aa0b0;
+}
+.p-btn {
+  margin-top: 24rpx;
+}
+.judge-list {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 14rpx;
+}
+.judge-pill {
+  font-size: 24rpx;
+  padding: 10rpx 22rpx;
+}
+
+.credit-card {
+  background: #fbfbff;
+  border: 2rpx solid #ececfa;
+}
+.credit-line {
+  line-height: 1.8;
+  margin-top: 6rpx;
+}
+.credit-name {
+  color: #5b5bd6;
+  font-weight: 700;
+}

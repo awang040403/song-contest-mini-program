@@ -1,0 +1,32 @@
+<view class="login-bg">
+  <view class="login-card">
+    <view class="logo">🎤</view>
+    <view class="title">吨 · 百业歌唱比赛</view>
+    <view class="subtitle">使用微信资料登录</view>
+
+    <!-- WeChat avatar chooser -->
+    <button class="avatar-wrap" open-type="chooseAvatar" bindchooseavatar="onChooseAvatar">
+      <image class="login-avatar" src="{{avatar || defaultAvatar}}" />
+      <view class="avatar-hint">{{avatar ? '点击更换头像' : '点击选择微信头像'}}</view>
+    </button>
+
+    <!-- WeChat nickname input -->
+    <view class="nickname-row">
+      <text class="nickname-label">昵称</text>
+      <input
+        class="nickname-input"
+        type="nickname"
+        placeholder="点击获取微信昵称"
+        value="{{nickname}}"
+        bindinput="onNickInput"
+        bindblur="onNickInput"
+      />
+    </view>
+
+    <button class="btn-primary login-btn" bindtap="confirmLogin">确认登录</button>
+
+    <view class="judge-note muted">
+      登录后将以你的微信昵称作为身份。只有被授权的评委昵称才能进入打分页。
+    </view>
+  </view>
+</view>

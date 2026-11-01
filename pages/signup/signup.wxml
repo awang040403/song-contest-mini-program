@@ -1,0 +1,57 @@
+<view class="container">
+  <!-- login hint -->
+  <view wx:if="{{!loggedIn}}" class="card login-hint" bindtap="goLogin">
+    <view class="lh-left">
+      <view class="lh-title">微信登录</view>
+      <view class="muted">登录后自动填入你的微信昵称</view>
+    </view>
+    <view class="lh-arrow">›</view>
+  </view>
+
+  <view class="card">
+    <view class="section-title">选手报名</view>
+
+    <view class="form-item">
+      <text class="form-label">姓名<text class="req">*</text></text>
+      <input class="input" placeholder="请输入选手姓名" value="{{form.name}}" maxlength="20" data-field="name" bindinput="onInput" />
+      <view wx:if="{{loggedIn}}" class="use-name" bindtap="useMyName">使用我的微信昵称</view>
+    </view>
+
+    <view class="form-item">
+      <text class="form-label">演唱曲目<text class="req">*</text></text>
+      <input class="input" placeholder="请输入歌曲名称" value="{{form.song}}" maxlength="40" data-field="song" bindinput="onInput" />
+    </view>
+
+    <view class="form-item">
+      <text class="form-label">演唱语言<text class="req">*</text></text>
+      <picker range="{{languages}}" value="{{languageIndex}}" bindchange="onLanguageChange">
+        <view class="picker {{languageIndex === null ? 'placeholder' : ''}}">
+          {{languageIndex === null ? '请选择语言' : languages[languageIndex]}}
+        </view>
+      </picker>
+    </view>
+
+    <view class="form-item" wx:if="{{languages[languageIndex] === '其他'}}">
+      <text class="form-label">其他语言</text>
+      <input class="input" placeholder="请填写语言" value="{{form.customLanguage}}" maxlength="20" data-field="customLanguage" bindinput="onInput" />
+    </view>
+
+    <view class="form-item">
+      <text class="form-label">原唱 / 作者</text>
+      <input class="input" placeholder="选填" value="{{form.artist}}" maxlength="30" data-field="artist" bindinput="onInput" />
+    </view>
+
+    <view class="form-item">
+      <text class="form-label">联系方式</text>
+      <input class="input" placeholder="选填，手机号或微信号" value="{{form.contact}}" maxlength="30" data-field="contact" bindinput="onInput" />
+    </view>
+
+    <view class="form-item">
+      <text class="form-label">备注</text>
+      <textarea class="textarea" placeholder="选填，如伴奏需求等" value="{{form.note}}" maxlength="100" data-field="note" bindinput="onInput" />
+      <view class="counter">{{form.note.length}}/100</view>
+    </view>
+
+    <button class="btn-primary submit" bindtap="submit">提交报名</button>
+  </view>
+</view>

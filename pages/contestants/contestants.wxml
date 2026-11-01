@@ -1,0 +1,39 @@
+<view class="container">
+  <view wx:if="{{loading}}" class="empty">加载中…</view>
+
+  <view wx:elif="{{error}}" class="empty">
+    <view style="font-size:64rpx;">⚠️</view>
+    <view class="muted" style="padding:0 40rpx;">{{error}}</view>
+  </view>
+
+  <view wx:elif="{{list.length === 0}}" class="empty">
+    <view style="font-size:80rpx;">🎵</view>
+    <view>还没有选手报名</view>
+    <button class="btn-ghost" style="margin-top:32rpx;" bindtap="goSignup">去报名</button>
+  </view>
+
+  <view wx:for="{{list}}" wx:key="id" class="card contestant" bindtap="goJudge" data-id="{{item.id}}">
+    <view class="row">
+      <view class="num">{{item.number}}</view>
+      <view class="info">
+        <view class="name">{{item.name}}</view>
+        <view class="song">《{{item.song}}》</view>
+        <view class="meta">
+          <text class="tag">{{item.language}}</text>
+          <text wx:if="{{item.artist}}" class="muted"> · 原唱 {{item.artist}}</text>
+        </view>
+      </view>
+      <view class="score-box">
+        <block wx:if="{{item.final !== null}}">
+          <view class="score">{{item.final}}</view>
+          <view class="muted">分</view>
+        </block>
+        <view class="status {{item.submitted === item.judgeCount ? 'done' : (item.submitted > 0 ? 'ing' : 'none')}}">{{item.statusText}}</view>
+      </view>
+    </view>
+    <view class="actions">
+      <view wx:if="{{item.canDelete}}" class="action-btn danger" catchtap="deleteOwn" data-id="{{item.id}}">删除报名</view>
+      <view class="action-btn" catchtap="goJudge" data-id="{{item.id}}">打分 ›</view>
+    </view>
+  </view>
+</view>

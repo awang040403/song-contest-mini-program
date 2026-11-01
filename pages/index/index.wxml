@@ -1,0 +1,66 @@
+<view class="container">
+  <view class="hero card">
+    <view class="hero-top">
+      <view>
+        <view class="hero-title">🎤 吨 · 百业歌唱比赛</view>
+        <view class="hero-sub">报名 · 评委打分 · 自动统计成绩</view>
+      </view>
+      <view wx:if="{{user}}" class="hero-user" bindtap="goProfile">
+        <image wx:if="{{user.avatar}}" class="hero-user-avatar" src="{{user.avatar}}" />
+        <text class="hero-user-name">{{user.name}}</text>
+      </view>
+      <view wx:else class="hero-user" bindtap="goLogin">
+        <text class="hero-user-name">未登录 · 登录</text>
+      </view>
+    </view>
+  </view>
+
+  <view class="stats card">
+    <view class="stat">
+      <view class="stat-num">{{contestantCount}}</view>
+      <view class="stat-label">报名选手</view>
+    </view>
+    <view class="stat">
+      <view class="stat-num">{{judgeCount}}</view>
+      <view class="stat-label">评委人数</view>
+    </view>
+    <view class="stat">
+      <view class="stat-num">{{scoredCount}}</view>
+      <view class="stat-label">已出成绩</view>
+    </view>
+  </view>
+
+  <view class="menu">
+    <view class="menu-item" bindtap="go" data-url="/pages/signup/signup">
+      <view class="menu-icon">📝</view>
+      <view class="menu-text">
+        <view class="menu-title">选手报名</view>
+        <view class="muted">填写姓名、曲目、语言等信息</view>
+      </view>
+      <view class="menu-arrow">›</view>
+    </view>
+
+    <view class="menu-item" bindtap="go" data-url="/pages/contestants/contestants">
+      <view class="menu-icon">👥</view>
+      <view class="menu-text">
+        <view class="menu-title">选手列表</view>
+        <view class="muted">查看报名选手并进入打分</view>
+      </view>
+      <view class="menu-arrow">›</view>
+    </view>
+
+    <view class="menu-item" bindtap="go" data-url="/pages/results/results">
+      <view class="menu-icon">🏆</view>
+      <view class="menu-text">
+        <view class="menu-title">成绩排行</view>
+        <view class="muted">查看最终得分与冠军</view>
+      </view>
+      <view class="menu-arrow">›</view>
+    </view>
+  </view>
+
+  <view class="rule card">
+    <view class="section-title">计分规则</view>
+    <view class="muted">共 {{judgeCount}} 位评委打分，每位满分 100。全部评委打完后，去掉一个最高分和一个最低分，取剩余平均分作为最终成绩。</view>
+  </view>
+</view>

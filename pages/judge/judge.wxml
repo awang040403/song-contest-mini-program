@@ -1,0 +1,116 @@
+<!-- Not logged in -->
+<view wx:if="{{access === 'guest'}}" class="gate">
+  <view class="gate-icon">🔒</view>
+  <view class="gate-title">请先登录</view>
+  <view class="muted gate-text">打分功能仅对授权评委开放，请使用微信登录后再试。</view>
+  <button class="btn-primary gate-btn" bindtap="goLogin">微信登录</button>
+</view>
+
+<!-- Logged in but not an authorized judge -->
+<view wx:elif="{{access === 'denied'}}" class="gate">
+  <view class="gate-icon">⛔</view>
+  <view class="gate-title">无打分权限</view>
+  <view class="muted gate-text">
+    当前账号「{{user.name}}」不在授权评委名单中，无法打分。如有疑问请联系赛事管理员。
+  </view>
+  <button class="btn-ghost gate-btn" bindtap="goBack">返回</button>
+</view>
+
+<!-- Authorized judge -->
+<block wx:elif="{{access === 'granted'}}">
+  <view wx:if="{{loading}}" class="empty">加载中…</view>
+  <view wx:elif="{{error}}" class="empty">
+    <view style="font-size:64rpx;">⚠️</view>
+    <view class="muted" style="padding:0 40rpx;">{{error}}</view>
+  </view>
+
+  <view class="container" wx:elif="{{contestant}}">
+    <!-- logged-in judge banner -->
+    <view class="judge-banner">
+      <image class="judge-banner-avatar" src="{{user.avatar}}" wx:if="{{user.avatar}}" />
+      <text class="judge-banner-text">{{mySeat + 1}}号评委 · {{user.name}}</text>
+    </view>
+
+    <!-- contestant header -->
+    <view class="card header">
+      <view class="h-name">{{contestant.number}}. {{contestant.name}}</view>
+      <view class="h-song">《{{contestant.song}}》 · {{contestant.language}}</view>
+      <view wx:if="{{finalResult.final !== null}}" class="h-final">
+        当前成绩 <text class="h-final-num">{{finalResult.final}}</text>
+        <text class="h-final-sub">（{{finalResult.submitted}}/{{finalResult.judgeCount}} 评委）</text>
+      </view>
+    </view>
+
+    <!-- read-only overview of all seats -->
+    <view class="card">
+      <view class="section-title">评委打分进度</view>
+      <view class="judges">
+        <view
+          wx:for="{{judgeStatus}}"
+          wx:key="index"
+          class="judge-chip {{index === mySeat ? 'mine' : ''}} {{item !== null ? 'scored' : ''}}"
+        >
+          <view class="jc-label">{{index + 1}}号{{index === mySeat ? '（我）' : ''}}</view>
+          <view class="jc-sub">{{item !== null ? item + '分' : '未打'}}</view>
+        </view>
+      </view>
+      <view class="muted overview-note">你只能查看并编辑自己（{{mySeat + 1}}号）的打分，其他评委的分数不可更改。</view>
+    </view>
+
+    <!-- MY scoring form -->
+    <view class="card">
+      <view class="section-title">
+        我的打分（{{mySeat + 1}}号 · 满分 100）
+        <text wx:if="{{submitted}}" class="locked-tag">已锁定</text>
+      </view>
+
+      <view wx:for="{{inputs}}" wx:key="key" class="dim">
+        <view class="dim-head">
+          <text class="dim-label">{{item.label}}</text>
+          <text class="dim-max">/ {{item.max}}</text>
+        </view>
+        <input
+          class="dim-input {{submitted ? 'locked' : ''}}"
+          type="number"
+          placeholder="0"
+          value="{{item.value}}"
+          disabled="{{submitted}}"
+          data-key="{{item.key}}"
+          bindinput="onScoreInput"
+          bindblur="onScoreBlur"
+        />
+      </view>
+
+      <view class="total-row">
+        <text>合计</text>
+        <text class="total-num">{{currentTotal}}</text>
+      </view>
+
+      <block wx:if="{{submitted}}">
+        <view class="submitted-box">
+          ✓ 你已于提交后锁定，分数不可修改。
+        </view>
+      </block>
+      <block wx:else>
+        <button class="btn-primary" bindtap="submitScore">提交我的打分</button>
+        <view class="lock-note muted">提交后将锁定，不能再修改。</view>
+      </block>
+    </view>
+
+    <view class="card" wx:if="{{finalResult.final !== null}}">
+      <view class="section-title">成绩预览</view>
+      <view class="muted" wx:if="{{finalResult.submitted < finalResult.judgeCount}}">
+        已有 {{finalResult.submitted}} 位评委打分，待全部 {{finalResult.judgeCount}} 位打完后将去掉最高和最低分计算最终成绩。
+      </view>
+      <view class="muted" wx:else>
+        已去掉一个最高分和一个最低分，取中间 {{finalResult.judgeCount - 2}} 位平均 = <text class="total-num">{{finalResult.final}}</text> 分
+      </view>
+      <button class="btn-ghost" style="margin-top:20rpx;" bindtap="viewResults">查看成绩排行 ›</button>
+    </view>
+  </view>
+
+  <view wx:else class="empty">未找到该选手</view>
+</block>
+
+<!-- checking -->
+<view wx:else class="empty">加载中…</view>

@@ -1,0 +1,90 @@
+.hero {
+  background: linear-gradient(135deg, #5b5bd6, #8a6ef0);
+  color: #fff;
+}
+.hero-top {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+.hero-title {
+  font-size: 46rpx;
+  font-weight: 800;
+}
+.hero-sub {
+  margin-top: 12rpx;
+  font-size: 26rpx;
+  opacity: 0.92;
+}
+.hero-user {
+  display: flex;
+  align-items: center;
+  background: rgba(255, 255, 255, 0.18);
+  border-radius: 999rpx;
+  padding: 8rpx 18rpx 8rpx 8rpx;
+}
+.hero-user-avatar {
+  width: 48rpx;
+  height: 48rpx;
+  border-radius: 50%;
+  margin-right: 12rpx;
+}
+.hero-user-name {
+  font-size: 24rpx;
+  color: #fff;
+  max-width: 180rpx;
+  overflow: hidden;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+}
+
+.stats {
+  display: flex;
+  justify-content: space-around;
+}
+.stat {
+  text-align: center;
+  flex: 1;
+}
+.stat-num {
+  font-size: 52rpx;
+  font-weight: 800;
+  color: #5b5bd6;
+}
+.stat-label {
+  font-size: 24rpx;
+  color: #9aa0b0;
+  margin-top: 6rpx;
+}
+
+.menu-item {
+  display: flex;
+  align-items: center;
+  background: #fff;
+  border-radius: 24rpx;
+  padding: 30rpx 32rpx;
+  margin-bottom: 22rpx;
+  box-shadow: 0 10rpx 26rpx rgba(31, 36, 48, 0.05);
+}
+.menu-icon {
+  width: 84rpx;
+  height: 84rpx;
+  border-radius: 22rpx;
+  background: #eef0fb;
+  font-size: 44rpx;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-right: 24rpx;
+}
+.menu-text {
+  flex: 1;
+}
+.menu-title {
+  font-size: 32rpx;
+  font-weight: 700;
+}
+.menu-arrow {
+  font-size: 48rpx;
+  color: #cfd2de;
+}

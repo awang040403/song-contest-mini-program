@@ -1,0 +1,80 @@
+.champion {
+  background: linear-gradient(135deg, #f6b73c, #ff9a3c);
+  color: #fff;
+  text-align: center;
+  padding: 46rpx 32rpx;
+  box-shadow: 0 14rpx 34rpx rgba(246, 150, 60, 0.3);
+}
+.crown {
+  font-size: 80rpx;
+}
+.c-title {
+  font-size: 28rpx;
+  letter-spacing: 6rpx;
+  opacity: 0.95;
+}
+.c-name {
+  font-size: 50rpx;
+  font-weight: 800;
+  margin-top: 8rpx;
+}
+.c-song {
+  font-size: 28rpx;
+  opacity: 0.95;
+  margin-top: 6rpx;
+}
+.c-score {
+  font-size: 42rpx;
+  font-weight: 800;
+  margin-top: 16rpx;
+}
+
+.rank-row {
+  display: flex;
+  align-items: center;
+  padding: 24rpx 28rpx;
+}
+.rank-badge {
+  width: 68rpx;
+  height: 68rpx;
+  border-radius: 20rpx;
+  background: #f1f2f8;
+  color: #6b7280;
+  font-weight: 800;
+  font-size: 30rpx;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-right: 24rpx;
+  flex-shrink: 0;
+}
+.rank-badge.rank-1 { background: #f6b73c; color: #fff; }
+.rank-badge.rank-2 { background: #c0c6cc; color: #fff; }
+.rank-badge.rank-3 { background: #d6a67a; color: #fff; }
+
+.r-info {
+  flex: 1;
+  min-width: 0;
+}
+.r-name {
+  font-size: 32rpx;
+  font-weight: 700;
+}
+.r-song {
+  font-size: 26rpx;
+  color: #6b7280;
+  margin-top: 4rpx;
+}
+.r-progress {
+  margin-top: 4rpx;
+  font-size: 22rpx;
+}
+.r-score-box {
+  text-align: right;
+  min-width: 120rpx;
+}
+.r-score {
+  font-size: 46rpx;
+  font-weight: 800;
+  color: #5b5bd6;
+}

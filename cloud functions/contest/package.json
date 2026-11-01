@@ -1,0 +1,9 @@
+{
+  "name": "contest",
+  "version": "1.0.0",
+  "description": "Song contest cloud function (contestants + scores)",
+  "main": "index.js",
+  "dependencies": {
+    "wx-server-sdk": "~2.6.3"
+  }
+}

@@ -1,0 +1,48 @@
+{
+  "pages": [
+    "pages/index/index",
+    "pages/signup/signup",
+    "pages/contestants/contestants",
+    "pages/judge/judge",
+    "pages/results/results",
+    "pages/login/login",
+    "pages/profile/profile"
+  ],
+  "window": {
+    "backgroundTextStyle": "light",
+    "navigationBarBackgroundColor": "#5b5bd6",
+    "navigationBarTitleText": "吨 · 百业歌唱比赛",
+    "navigationBarTextStyle": "white",
+    "backgroundColor": "#eef1f8"
+  },
+  "tabBar": {
+    "color": "#9aa0b0",
+    "selectedColor": "#5b5bd6",
+    "backgroundColor": "#ffffff",
+    "borderStyle": "white",
+    "list": [
+      {
+        "pagePath": "pages/index/index",
+        "text": "首页"
+      },
+      {
+        "pagePath": "pages/signup/signup",
+        "text": "报名"
+      },
+      {
+        "pagePath": "pages/contestants/contestants",
+        "text": "选手"
+      },
+      {
+        "pagePath": "pages/results/results",
+        "text": "成绩"
+      },
+      {
+        "pagePath": "pages/profile/profile",
+        "text": "我的"
+      }
+    ]
+  },
+  "style": "v2",
+  "sitemapLocation": "sitemap.json"
+}

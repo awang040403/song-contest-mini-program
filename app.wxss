@@ -1,0 +1,95 @@
+/* app.wxss - global styles (redesigned) */
+page {
+  --brand: #5b5bd6;
+  --brand-2: #8a6ef0;
+  --accent: #ff7a59;
+  --ink: #1f2430;
+  --ink-soft: #6b7280;
+  --bg: #eef1f8;
+  background: var(--bg);
+  font-family: -apple-system, BlinkMacSystemFont, "Helvetica Neue", Helvetica, sans-serif;
+  color: var(--ink);
+  font-size: 28rpx;
+}
+
+.container {
+  padding: 28rpx 24rpx 48rpx;
+  box-sizing: border-box;
+}
+
+.card {
+  background: #ffffff;
+  border-radius: 28rpx;
+  padding: 36rpx;
+  margin-bottom: 26rpx;
+  box-shadow: 0 10rpx 30rpx rgba(31, 36, 48, 0.06);
+}
+
+/* Buttons */
+.btn-primary {
+  background: linear-gradient(135deg, #5b5bd6, #8a6ef0);
+  color: #fff;
+  border-radius: 999rpx;
+  font-size: 32rpx;
+  line-height: 2.9;
+  border: none;
+  box-shadow: 0 10rpx 24rpx rgba(91, 91, 214, 0.28);
+}
+.btn-primary[disabled] {
+  background: #c7c9e6;
+  color: #fff;
+  box-shadow: none;
+}
+.btn-ghost {
+  background: #fff;
+  color: #5b5bd6;
+  border: 2rpx solid #d9d9f3;
+  border-radius: 999rpx;
+  font-size: 30rpx;
+  line-height: 2.7;
+}
+.btn-danger-ghost {
+  background: #fff;
+  color: #e5484d;
+  border: 2rpx solid #f4c7c9;
+  border-radius: 999rpx;
+  font-size: 30rpx;
+  line-height: 2.7;
+}
+
+.section-title {
+  font-size: 30rpx;
+  font-weight: 700;
+  margin-bottom: 18rpx;
+  color: var(--ink);
+}
+
+.muted {
+  color: var(--ink-soft);
+  font-size: 26rpx;
+  line-height: 1.6;
+}
+
+.empty {
+  text-align: center;
+  color: #a9adbb;
+  padding: 90rpx 0;
+}
+
+/* Reusable pill/tag */
+.pill {
+  display: inline-block;
+  background: #eef0fb;
+  color: #5b5bd6;
+  font-size: 22rpx;
+  padding: 6rpx 18rpx;
+  border-radius: 999rpx;
+}
+
+/* Avatar */
+.avatar {
+  width: 88rpx;
+  height: 88rpx;
+  border-radius: 50%;
+  background: #eef0fb;
+}
